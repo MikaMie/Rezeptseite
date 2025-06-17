@@ -1,31 +1,24 @@
+import { Link } from "react-router-dom";
+
 export default function RecipeCard({ recipe }) {
   return (
-    <div className="bg-white shadow-md rounded-2xl p-6 border border-gray-200 hover:shadow-lg transition-shadow">
-      <div className="mb-2">
-        <h2 className="text-xl font-semibold text-gray-800">{recipe.title}</h2>
-        <p className="text-sm text-gray-500">
-          {new Date(recipe.created_at).toLocaleDateString()}
-        </p>
-      </div>
-      <p className="text-gray-700 mb-4">{recipe.description}</p>
-
-      <div className="mb-4">
-        <h3 className="font-semibold text-gray-800 mb-1">Zutaten:</h3>
-        <ul className="list-disc list-inside text-gray-700">
-          {recipe.zutaten?.map((zutat, index) => (
-            <li key={index}>{zutat}</li>
-          ))}
-        </ul>
+    <Link to={`/recipe/${recipe.id}`} className="bg-white shadow-md rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow">
+      <div className="relative">
+        <img
+          src={recipe.image_url}
+          alt={recipe.title}
+          className="w-full h-48 object-cover"
+          loading="lazy"
+        />
+        <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white px-4 py-2">
+          <h2 className="text-lg font-semibold truncate">{recipe.title}</h2>
+        </div>
       </div>
 
-      <div>
-        <h3 className="font-semibold text-gray-800 mb-1">Zubereitung:</h3>
-        <ol className="list-decimal list-inside text-gray-700">
-          {recipe.introductions?.map((step, index) => (
-            <li key={index}>{step}</li>
-          ))}
-        </ol>
+      <div className="p-5">
+
+        <p className="text-gray-700 mb-4">{recipe.description}</p>
       </div>
-    </div>
+    </Link>
   );
 }

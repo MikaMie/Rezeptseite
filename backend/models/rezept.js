@@ -7,17 +7,16 @@ const Recipe = sequelize.define("Recipe", {
     allowNull: false,
   },
   description: { type: DataTypes.TEXT, allowNull: false },
-  zutaten: {
+  ingredients: {
     type: DataTypes.JSON,
     allowNull: false,
   },
-  introductions: {
+  instructions: {
     type: DataTypes.JSON,
     allowNull: false,
   },
-  created_at: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW,
+  image_url: {
+    type: DataTypes.TEXT,
   },
 });
 
