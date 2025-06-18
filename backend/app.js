@@ -1,6 +1,9 @@
 const express = require("express");
+require('dotenv').config();
 const sequelize = require("./database");
 const rezepteRoutes = require("./routes/rezepte");
+const authRoutes = require('./routes/authRoutes');
+
 
 const app = express();
 app.use(express.json());
@@ -12,6 +15,8 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/recipes/", rezepteRoutes);
+app.use("/api/auth", authRoutes);
+
 
 const PORT = 3000;
 
