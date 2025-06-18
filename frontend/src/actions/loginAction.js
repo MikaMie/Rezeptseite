@@ -4,17 +4,20 @@ export async function action({ request }) {
   const data = await request.formData();
   const password = data.get("password");
 
-  const res = await fetch("http://localhost:3000/api/auth", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ password }),
-  });
+  try {
+    const response = await fetch("http://localhost:3000/api/auth", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password }),
+    });
 
-  if (res.ok) {
-    const data = await res.json();
+    if (!response.ok) {
+      return { error: "Falsches Passwort" };
+    }
+    const data = await response.json();
     localStorage.setItem("token", data.token);
     return redirect("/recipes");
-  } else {
-    setError("Falsches Passwort");
+  } catch (error) {
+    return { error: "Ein unerwarteter Fehler ist aufgetreten." };
   }
 }

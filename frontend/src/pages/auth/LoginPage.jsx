@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useNavigate, Form } from "react-router-dom";
+import { useNavigate, Form, useActionData } from "react-router-dom";
 
 export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-
+  const actionData = useActionData();
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
@@ -32,6 +32,9 @@ export default function LoginPage() {
         >
           Einloggen
         </button>
+        {actionData?.error && (
+          <p className="text-red-500">{actionData.error}</p>
+        )}
       </Form>
     </div>
   );
