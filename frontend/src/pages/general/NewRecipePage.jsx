@@ -13,7 +13,6 @@ export default function NewRecipePage() {
     newItems[i] = value;
     setIngredients(newItems);
   };
-
   const handleInstructionChange = (i, value) => {
     const newItems = [...instructions];
     newItems[i] = value;
@@ -21,7 +20,7 @@ export default function NewRecipePage() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-slate-50 mt-5 rounded shadow-md">
+    <div className="min-h-screen sm:min-h-0 max-w-2xl mx-auto p-6 bg-slate-50 mt-5 rounded shadow-md">
       <h2 className="text-2xl font-bold mb-4">Neues Rezept erstellen</h2>
 
       <Form method="post" className="space-y-4">

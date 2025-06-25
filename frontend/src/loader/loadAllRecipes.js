@@ -1,5 +1,7 @@
+const url = import.meta.env.API_URL;
+
 export async function loader() {
-  const url = `http://localhost:3000/api/recipes/`;
+  const url = `/api/recipes/`;
   try {
     const response = await fetch(url);
     if (!response.ok) {

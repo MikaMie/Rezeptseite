@@ -1,4 +1,5 @@
 import { redirect } from "react-router-dom";
+const url = import.meta.env.API_URL;
 
 export async function action({ request }) {
   const formData = await request.formData();
@@ -20,7 +21,7 @@ export async function action({ request }) {
   };
 
   try {
-    const response = await fetch("http://localhost:3000/api/recipes/create", {
+    const response = await fetch(`/api/recipes/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
