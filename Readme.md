@@ -63,7 +63,6 @@ This project marked a major step forward in my development journey:
 ## 👨‍💻 Author
 
 **Mika Mielinski**  
-🌍 [mielinski.tech](https://mielinski.tech)  
 📫 Contact: Coming soon
 
 ---
