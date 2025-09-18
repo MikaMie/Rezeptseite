@@ -5,7 +5,7 @@ This is a **fullstack MERN (MongoDB, Express, React, Node.js)** application for 
 With this project, I brought together all major areas of modern web development: **React for the frontend**, **Express/MongoDB for the backend**, and a **production-grade DevOps setup** using Docker, Nginx, and environment configuration.
 
 🔗 **Live Demo**  
-[https://rezepte.mielinski.tech/recipes](https://rezepte.mielinski.tech/recipes)
+[https://rezepte.mielinski.tech/recipes](https://rezepte.mielinski.tech)
 
 ---
 
