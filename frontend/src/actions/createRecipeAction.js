@@ -11,6 +11,7 @@ export async function action({ request }) {
   const image_url = formData.get("image_url");
   const ingredients = formData.getAll("ingredients");
   const instructions = formData.getAll("instructions");
+  const tags = formData.get("selectedTags");
 
   const recipe = {
     title,
@@ -18,10 +19,11 @@ export async function action({ request }) {
     image_url,
     ingredients,
     instructions,
+    tags,
   };
 
   try {
-    const response = await fetch(`/api/recipes/create`, {
+    const response = await fetch(`http://localhost:3000/api/recipes/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,7 +36,7 @@ export async function action({ request }) {
       return { error: "Rezept konnte nicht gespeichert werden." };
     }
 
-    return redirect("/recipes");
+    return redirect("/");
   } catch (error) {
     return { error: "Netzwerkfehler oder Server nicht erreichbar." };
   }

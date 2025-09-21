@@ -18,6 +18,14 @@ const Recipe = sequelize.define("Recipe", {
   image_url: {
     type: DataTypes.TEXT,
   },
+  tags: {
+    type: DataTypes.JSON,
+    defaultValue: [],
+  },
+  difficulty: {
+    type: DataTypes.SMALLINT,
+    defaultValue: 0,
+  },
 });
 
 module.exports = Recipe;

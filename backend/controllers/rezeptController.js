@@ -1,5 +1,6 @@
 const Recipe = require("../models/rezept");
 
+// fetch all recipes
 exports.getAll = async (req, res) => {
   try {
     const recipies = await Recipe.findAll();
@@ -9,15 +10,26 @@ exports.getAll = async (req, res) => {
   }
 };
 
+// create new recipe
 exports.create = async (req, res) => {
   try {
-    const recipe = await Recipe.create(req.body);
+    const parsedTags = req.body.tags ? JSON.parse(req.body.tags) : [];
+
+    const recipe = await Recipe.create({
+      ...req.body,
+      tags: parsedTags,
+    });
+
     res.status(201).json(recipe);
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    console.error("Fehler beim Erstellen des Rezepts:", err);
+    res.status(400).json({
+      error: err.message || "Ungültige Rezeptdaten.",
+    });
   }
 };
 
+// fetch a specifig recipe
 exports.getRecipeById = async (req, res) => {
   try {
     const recipeId = req.params.id;
@@ -35,3 +47,4 @@ exports.getRecipeById = async (req, res) => {
   }
 };
 
+// UPDATE, DELETE, come later

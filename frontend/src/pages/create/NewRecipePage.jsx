@@ -1,9 +1,14 @@
 import { Form } from "react-router-dom";
+import { TAG_CATEGORIES } from "../../constants/tags";
 import { useState } from "react";
+import Select from "react-select";
+import DifficultySelector from "../../components/recipes/CRUD/DifficultySelector";
 
 export default function NewRecipePage() {
   const [ingredients, setIngredients] = useState([""]);
   const [instructions, setInstructions] = useState([""]);
+  const [selectedTags, setSelectedTags] = useState([]);
+  const [difficulty, setDifficulty] = useState(0);
 
   const addIngredient = () => setIngredients([...ingredients, ""]);
   const addInstruction = () => setInstructions([...instructions, ""]);
@@ -19,9 +24,15 @@ export default function NewRecipePage() {
     setInstructions(newItems);
   };
 
+  const handleTagChange = (selectedOptions) => {
+    setSelectedTags(selectedOptions || []);
+  };
+
   return (
     <div className="min-h-screen sm:min-h-0 max-w-2xl mx-auto p-6 bg-slate-50 mt-5 rounded shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Neues Rezept erstellen</h2>
+      <h2 className="text-2xl font-bold mb-4 text-gray-700">
+        Neues Rezept erstellen
+      </h2>
 
       <Form method="post" className="space-y-4">
         <input
@@ -46,8 +57,9 @@ export default function NewRecipePage() {
           className="w-full p-2 border rounded"
         />
 
+        {/* Ingredients */}
         <div>
-          <h3 className="font-semibold mb-2">Zutaten</h3>
+          <h3 className="font-semibold mb-2 text-gray-700">Zutaten</h3>
           {ingredients.map((item, index) => (
             <input
               key={index}
@@ -68,8 +80,9 @@ export default function NewRecipePage() {
           </button>
         </div>
 
+        {/* Instructions */}
         <div>
-          <h3 className="font-semibold mb-2">Anleitung</h3>
+          <h3 className="font-semibold mb-2 text-gray-700">Anleitung</h3>
           {instructions.map((step, index) => (
             <input
               key={index}
@@ -89,6 +102,45 @@ export default function NewRecipePage() {
             + Schritt hinzufügen
           </button>
         </div>
+
+        {/* Tags */}
+        <div className="space-y-2">
+          <h3 className="font-semibold text-gray-700">Tags</h3>
+          <Select
+            isMulti
+            name="tags"
+            options={TAG_CATEGORIES}
+            value={selectedTags}
+            onChange={handleTagChange}
+            placeholder="Tags auswählen..."
+            className="react-select-container"
+            classNamePrefix="react-select"
+            styles={{
+              option: (provided) => ({
+                ...provided,
+                display: "flex",
+                alignItems: "center",
+              }),
+              multiValue: (styles, { data }) => ({
+                ...styles,
+                backgroundColor: data.color || "#e2e8f0",
+              }),
+              multiValueLabel: (styles) => ({
+                ...styles,
+                color: "#1e293b",
+              }),
+            }}
+          />
+          <input
+            type="hidden"
+            name="selectedTags"
+            value={JSON.stringify(selectedTags.map((tag) => tag.value))}
+          />
+        </div>
+        <DifficultySelector
+          difficulty={difficulty}
+          setDifficulty={setDifficulty}
+        />
 
         <button
           type="submit"

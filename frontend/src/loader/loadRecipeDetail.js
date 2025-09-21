@@ -2,7 +2,7 @@ const url = import.meta.env.API_URL;
 
 export async function loader({ params }) {
   const { id } = params;
-  const url = `/api/recipes/${id}`;
+  const url = `http://localhost:3000/api/recipes/${id}`;
 
   try {
     const response = await fetch(url);

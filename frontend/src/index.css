@@ -1,1 +1,117 @@
 @import "tailwindcss";
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  html,
+  body {
+    height: auto;
+    overflow: visible !important;
+  }
+
+  .print-reset {
+    position: static !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    background: #fff !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .avoid-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .break-before {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  img,
+  h2,
+  h3,
+  li,
+  p {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  input[type="checkbox"] {
+    display: none !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+@layer utilities {
+  @media print {
+    @page {
+      size: A4;
+      margin: 12mm;
+    }
+
+    html,
+    body,
+    #root {
+      height: auto !important;
+      overflow: visible !important;
+    }
+
+    .print-stack {
+      display: block !important;
+    }
+    .print-block {
+      display: block !important;
+    }
+
+    .print-reset {
+      position: static !important;
+      top: auto !important;
+      max-height: none !important;
+      overflow: visible !important;
+      box-shadow: none !important;
+      transform: none !important;
+    }
+
+    .avoid-break {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .break-before {
+      break-before: page;
+      page-break-before: always;
+    }
+
+    .no-print {
+      display: none !important;
+    }
+
+    img,
+    svg,
+    video,
+    canvas {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+    .h-screen,
+    .min-h-screen {
+      height: auto !important;
+      min-height: auto !important;
+    }
+
+    * {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
+}
