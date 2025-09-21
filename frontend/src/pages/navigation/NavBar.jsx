@@ -28,7 +28,7 @@ export default function Navbar() {
             </span>
           </button>
           <span className="font-serif italic underline text-lg">
-            Jenseits vom Tellerrand
+            <h2 className="text-slate-700"> Jenseits vom Tellerrand</h2>
           </span>
           <span className="w-6" />
         </div>

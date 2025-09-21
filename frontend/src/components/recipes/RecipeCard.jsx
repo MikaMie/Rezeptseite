@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import { FireIcon as FireIconSolid } from "@heroicons/react/24/solid";
 import { FireIcon as FireIconOutline } from "@heroicons/react/24/outline";
+import { ClockIcon } from "@heroicons/react/24/solid";
 
 export default function RecipeCard({ recipe }) {
   const title = recipe?.title ?? "Rezept";
   const img = recipe?.image_url;
   const difficulty = recipe?.difficulty;
   const desc = recipe?.description ?? "";
+  const workTime = recipe.preparationtime + recipe.cookingtime;
 
   console.log(recipe);
 
@@ -25,16 +27,19 @@ export default function RecipeCard({ recipe }) {
       {/* Media */}
       <div className="relative overflow-hidden rounded-t-2xl">
         {/* Difficulty */}
-        <div className="absolute top-2 right-2 z-10 flex gap-0.5">
-          {[1, 2, 3, 4, 5].map((level) => (
-            <div key={level} className="h-5 w-5">
-              {level <= difficulty ? (
-                <FireIconSolid className="text-red-600 dark:text-amber-400" />
-              ) : (
-                <FireIconOutline className="text-gray-300 dark:text-stone-600" />
-              )}
-            </div>
-          ))}
+        <div className="absolute top-2 right-2 z-10 flex gap-0.5 flex-col">
+          <div className="flex flex-row">
+            {" "}
+            {[1, 2, 3, 4, 5].map((level) => (
+              <div key={level} className="h-5 w-5">
+                {level <= difficulty ? (
+                  <FireIconSolid className="text-red-600 dark:text-amber-400" />
+                ) : (
+                  <FireIconOutline className="text-gray-300 dark:text-stone-600" />
+                )}
+              </div>
+            ))}
+          </div>
         </div>
         {/* Image */}
         <div className="aspect-[4/3] sm:aspect-[16/9] bg-gray-100 dark:bg-stone-800 relative">
@@ -89,10 +94,13 @@ export default function RecipeCard({ recipe }) {
           </p>
         )}
 
-        {recipe?.duration || recipe?.servings ? (
+        {workTime ? (
           <div className="mt-3 flex items-center gap-3 text-sm text-gray-500 dark:text-stone-400">
-            {recipe?.duration && <span>⏱️ {recipe.duration}</span>}
-            {recipe?.servings && <span>🍽️ {recipe.servings} Portionen</span>}
+            {workTime && (
+              <span className="flex flex-row items-center gap-1">
+                <ClockIcon className="h-4 w-4" /> {workTime} Minuten
+              </span>
+            )}
           </div>
         ) : null}
       </div>

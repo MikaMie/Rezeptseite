@@ -71,7 +71,7 @@ export default function RecipePage() {
 
           {/* Titel / Meta / Actions */}
           <div className="lg:col-span-5 flex flex-col gap-4 lg:order-2 h-full">
-            <header>
+            <header className="space-y-2">
               <h1 className="text-3xl sm:text-4xl font-semibold italic font-serif tracking-tight text-gray-900 dark:text-stone-100">
                 {data.title || "Rezept"}
               </h1>
@@ -92,7 +92,7 @@ export default function RecipePage() {
                         className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium"
                         style={{
                           backgroundColor: getTagColor(tag),
-                          color: "#FFFFFF", // Weiß für besseren Kontrast
+                          color: "#FFFFFF",
                         }}
                       >
                         {getTagIcon(tag)} {getTagLabel(tag)}
@@ -100,6 +100,10 @@ export default function RecipePage() {
                     ))}
                   </div>
                 )}
+              <div className="flex flex-row gap-6 rounded-xl border border-slate-300 p-2 justify-around shadow font-semibold text-slate-800">
+                <p>Vorbereitungszeit: {data.preparationtime} Minuten</p>
+                <p>Kochzeit: {data.cookingtime} Minuten</p>
+              </div>
             </header>
 
             {/* Actions */}

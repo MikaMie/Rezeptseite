@@ -26,6 +26,14 @@ const Recipe = sequelize.define("Recipe", {
     type: DataTypes.SMALLINT,
     defaultValue: 0,
   },
+  preparationtime: {
+    type: DataTypes.SMALLINT,
+    defaultValue: 0,
+  },
+  cookingtime: {
+    type: DataTypes.SMALLINT,
+    defaultValue: 0,
+  },
 });
 
 module.exports = Recipe;

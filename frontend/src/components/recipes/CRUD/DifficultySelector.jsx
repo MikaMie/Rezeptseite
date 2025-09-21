@@ -17,7 +17,7 @@ export default function DifficultySelector({ difficulty, setDifficulty }) {
               key={index}
               type="button"
               onClick={() => setDifficulty(index + 1)}
-              className={`p-1 rounded-full transition-colors ${
+              className={`p-1 rounded-full transition-colors cursor-pointer ${
                 isActive
                   ? "text-amber-500"
                   : "text-gray-300 hover:text-gray-400"
