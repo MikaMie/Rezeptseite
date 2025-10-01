@@ -10,8 +10,6 @@ export async function loader({ params }) {
       throw new Error("Reponse status: ", response.status);
     }
     const data = await response.json();
-    //DEBUG
-    console.log(data);
     return data;
   } catch (error) {
     console.error(error.message);

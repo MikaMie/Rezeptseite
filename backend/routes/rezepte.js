@@ -4,6 +4,7 @@ const rezeptController = require("../controllers/rezeptController");
 
 router.get("/", rezeptController.getAll);
 router.post("/create", rezeptController.create);
-router.get("/:id", rezeptController.getRecipeById)
+router.get("/:id", rezeptController.getRecipeById);
+router.patch("/:id/edit", rezeptController.updateRecipeById);
 
 module.exports = router;

@@ -47,4 +47,32 @@ exports.getRecipeById = async (req, res) => {
   }
 };
 
-// UPDATE, DELETE, come later
+// UPDATE a specifig recipe
+exports.updateRecipeById = async (req, res) => {
+  try {
+    const recipeId = req.params.id;
+    const updates = req.body;
+
+    // Direktes Update mit Sequelize
+    const [affectedRows] = await Recipe.update(updates, {
+      where: { id: recipeId },
+    });
+
+    if (affectedRows === 0) {
+      return res
+        .status(404)
+        .json({ message: "Rezept nicht gefunden oder keine Änderungen" });
+    }
+
+    // Aktualisiertes Rezept abrufen
+    const updatedRecipe = await Recipe.findByPk(recipeId);
+
+    res.json({
+      message: "Rezept erfolgreich aktualisiert",
+      recipe: updatedRecipe,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Serverfehler" });
+  }
+};

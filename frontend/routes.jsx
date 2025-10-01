@@ -4,10 +4,12 @@ import HomePage from "./src/pages/general/HomePage";
 import RecipeDetailView from "./src/pages/Detailview/RecipeDetailView";
 import RootLayout from "./src/pages/general/RootLayout";
 import NewRecipePage from "./src/pages/create/NewRecipePage";
+import EditRecipepage from "./src/pages/Detailview/RecipeEditView";
 
 import { loader as loadAllRecipes } from "./src/loader/loadAllRecipes";
 import { loader as loadRecipeDetail } from "./src/loader/loadRecipeDetail";
 import { action as createRecipeAction } from "./src/actions/createRecipeAction";
+import { action as updateRecipeAction } from "./src/actions/updateRecipeAction";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,12 @@ const router = createBrowserRouter([
         path: "/recipe/:id",
         element: <RecipeDetailView />,
         loader: loadRecipeDetail,
+      },
+      {
+        path: "/recipe/:id/edit",
+        element: <EditRecipepage />,
+        loader: loadRecipeDetail,
+        action: updateRecipeAction,
       },
     ],
   },

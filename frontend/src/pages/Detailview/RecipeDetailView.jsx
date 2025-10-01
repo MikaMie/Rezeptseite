@@ -1,11 +1,16 @@
-import { useLoaderData } from "react-router-dom";
-import { PrinterIcon, ShareIcon } from "@heroicons/react/24/outline";
+import { useLoaderData, Link, useParams } from "react-router-dom";
+import {
+  PrinterIcon,
+  ShareIcon,
+  PencilSquareIcon,
+} from "@heroicons/react/24/outline";
 import { TAG_CATEGORIES } from "../../constants/tags";
 import { FireIcon as FireIconSolid } from "@heroicons/react/24/solid";
 import { FireIcon as FireIconOutline } from "@heroicons/react/24/outline";
 
 export default function RecipePage() {
   const data = useLoaderData() || {};
+  const { id } = useParams();
 
   const formattedDate = data.createdAt
     ? new Date(data.createdAt).toLocaleDateString("de-DE", {
@@ -38,7 +43,6 @@ export default function RecipePage() {
     }
     return "";
   };
-  console.log(data);
 
   return (
     <main>
@@ -136,6 +140,13 @@ export default function RecipePage() {
                 <ShareIcon className="h-4 w-4" aria-hidden />
                 Teilen
               </button>
+              <Link
+                to={`/recipe/${id}/edit`}
+                className="inline-flex items-center gap-2 rounded-md border border-gray-300 dark:border-stone-700 px-3 py-2 text-sm hover:bg-gray-50 dark:hover:bg-stone-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
+              >
+                <PencilSquareIcon className="h-4 w-4" aria-hidden />
+                Bearbeiten
+              </Link>
             </div>
             <div className="mt-5 text-slate-700 font-semibold">
               {data.description && (

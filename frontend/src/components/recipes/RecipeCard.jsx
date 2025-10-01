@@ -10,8 +10,6 @@ export default function RecipeCard({ recipe }) {
   const desc = recipe?.description ?? "";
   const workTime = recipe.preparationtime + recipe.cookingtime;
 
-  console.log(recipe);
-
   return (
     <Link
       to={`/recipe/${recipe?.id}`}
