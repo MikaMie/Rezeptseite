@@ -12,7 +12,6 @@ export async function action({ request }) {
   const image_url = formData.get("image_url");
   const ingredients = formData.getAll("ingredients");
   const instructions = formData.getAll("instructions");
-  const tags = formData.get("selectedTags");
   const preparationTime = formData.get("preparationTime");
   const cookingTime = formData.get("cookingTime");
   const difficulty = formData.get("difficulty");
@@ -23,7 +22,6 @@ export async function action({ request }) {
     image_url,
     ingredients,
     instructions,
-    tags,
     preparationTime,
     cookingTime,
     difficulty,

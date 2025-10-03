@@ -17,7 +17,6 @@ export default function EditRecipepage() {
     image_url: "",
     ingredients: [""],
     instructions: [""],
-    selectedTags: [],
     preparationTime: "",
     cookingTime: "",
     difficulty: 0,
@@ -33,13 +32,6 @@ export default function EditRecipepage() {
         image_url: data.image_url || "",
         ingredients: data.ingredients?.length ? data.ingredients : [""],
         instructions: data.instructions?.length ? data.instructions : [""],
-        selectedTags:
-          data.tags?.map((tag) => ({
-            value: tag,
-            label: tag,
-            color:
-              TAG_CATEGORIES.find((t) => t.value === tag)?.color || "#e2e8f0",
-          })) || [],
         preparationTime: data.preparationtime || "",
         cookingTime: data.cookingtime || "",
         difficulty: data.difficulty || 0,
@@ -112,14 +104,6 @@ export default function EditRecipepage() {
         instructions: newInstructions,
       }));
     }
-  };
-
-  // Handler für Tags (react-select)
-  const handleTagChange = (selectedOptions) => {
-    setRecipeData((prev) => ({
-      ...prev,
-      selectedTags: selectedOptions || [],
-    }));
   };
 
   // Handler für Schwierigkeitsgrad
@@ -304,43 +288,6 @@ export default function EditRecipepage() {
           >
             <span className="text-lg">+</span> Weitere Schritt hinzufügen
           </button>
-        </div>
-
-        {/* Tags */}
-        <div className="space-y-2">
-          <h3 className="font-semibold text-gray-700">Tags</h3>
-          <Select
-            isMulti
-            name="tags"
-            options={TAG_CATEGORIES}
-            value={recipeData.selectedTags}
-            onChange={handleTagChange}
-            placeholder="Tags auswählen..."
-            className="react-select-container"
-            classNamePrefix="react-select"
-            styles={{
-              option: (provided) => ({
-                ...provided,
-                display: "flex",
-                alignItems: "center",
-              }),
-              multiValue: (styles, { data }) => ({
-                ...styles,
-                backgroundColor: data.color || "#e2e8f0",
-              }),
-              multiValueLabel: (styles) => ({
-                ...styles,
-                color: "#1e293b",
-              }),
-            }}
-          />
-          <input
-            type="hidden"
-            name="selectedTags"
-            value={JSON.stringify(
-              recipeData.selectedTags.map((tag) => tag.value)
-            )}
-          />
         </div>
 
         {/* Zeitangaben */}
