@@ -32,7 +32,7 @@ export default function Navbar() {
             <Bars3Icon className="h-5 w-5" aria-hidden="true" />
           </button>
 
-          <h2 className="text-slate-700 font-serif italic underline text-lg">
+          <h2 className="text-slate-700 font-serif font-bold italic underline text-lg">
             Jenseits vom Tellerrand
           </h2>
 
@@ -76,7 +76,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        <h1 className="font-semibold text-2xl md:text-3xl italic font-serif underline mb-8">
+        <h1 className="font-semibold text-slate-800 text-2xl md:text-3xl italic font-serif underline mb-8">
           Jenseits vom Tellerrand
         </h1>
 
@@ -125,7 +125,6 @@ export default function Navbar() {
               <span>Jetzt registrieren</span>
             </Link>
 
-            {/* Optional: kleiner Login-Link darunter */}
             <div className="mt-2 text-sm text-amber-900/80 text-center">
               <Link
                 to="/login"

@@ -1,10 +1,15 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const rezeptController = require("../controllers/rezeptController");
+import {
+  getAll,
+  create,
+  getRecipeById,
+  updateRecipeById,
+} from "../controllers/rezeptController.js";
 
-router.get("/", rezeptController.getAll);
-router.post("/create", rezeptController.create);
-router.get("/:id", rezeptController.getRecipeById);
-router.patch("/:id/edit", rezeptController.updateRecipeById);
+router.get("/", getAll);
+router.post("/create", create);
+router.get("/:id", getRecipeById);
+router.patch("/:id/edit", updateRecipeById);
 
-module.exports = router;
+export default router;

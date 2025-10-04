@@ -1,7 +1,7 @@
-const Recipe = require("../models/rezept");
+import Recipe from "../models/rezept.js";
 
 // fetch all recipes
-exports.getAll = async (req, res) => {
+export const getAll = async (req, res) => {
   try {
     const recipies = await Recipe.findAll();
     res.json(recipies);
@@ -11,7 +11,7 @@ exports.getAll = async (req, res) => {
 };
 
 // create new recipe
-exports.create = async (req, res) => {
+export const create = async (req, res) => {
   try {
     const parsedTags = req.body.tags ? JSON.parse(req.body.tags) : [];
 
@@ -30,7 +30,7 @@ exports.create = async (req, res) => {
 };
 
 // fetch a specifig recipe
-exports.getRecipeById = async (req, res) => {
+export const getRecipeById = async (req, res) => {
   try {
     const recipeId = req.params.id;
 
@@ -48,7 +48,7 @@ exports.getRecipeById = async (req, res) => {
 };
 
 // UPDATE a specifig recipe
-exports.updateRecipeById = async (req, res) => {
+export const updateRecipeById = async (req, res) => {
   try {
     const recipeId = req.params.id;
     const updates = req.body;

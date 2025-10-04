@@ -67,12 +67,12 @@ export const login = async (req, res, next) => {
   }
 
   try {
-    const user = await User.findOne({ name: name });
+    const user = await User.findOne({ where: { name: name } });
 
     if (!user) {
-      return res.status(401).json({
-        message: "Falsches Passwort!",
-      });
+      return res
+        .status(401)
+        .json({ message: "Ungültiger Benutzername oder Passwort" });
     }
     const isMatch = await bcrypt.compare(password, user.password);
     if (isMatch) {

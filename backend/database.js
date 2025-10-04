@@ -1,6 +1,8 @@
 // database.js
-require("dotenv").config();
-const { Sequelize } = require("sequelize");
+import dotenv from "dotenv";
+dotenv.config();
+
+import { Sequelize } from "sequelize";
 
 const useSSL = String(process.env.DB_SSL || "false").toLowerCase() === "true";
 
@@ -20,4 +22,4 @@ const sequelize = new Sequelize(
   }
 );
 
-module.exports = sequelize;
+export default sequelize;

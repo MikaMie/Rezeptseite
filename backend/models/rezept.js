@@ -1,5 +1,5 @@
-const { DataTypes } = require("sequelize");
-const sequelize = require("../database");
+import { DataTypes } from "sequelize";
+import sequelize from "../database.js";
 
 const Recipe = sequelize.define("Recipe", {
   title: {
@@ -36,4 +36,4 @@ const Recipe = sequelize.define("Recipe", {
   },
 });
 
-module.exports = Recipe;
+export default Recipe;

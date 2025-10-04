@@ -1,8 +1,8 @@
 // models/User.js
 "use strict";
 
-const { DataTypes, literal } = require("sequelize");
-const sequelize = require("../database");
+import { DataTypes, literal } from "sequelize";
+import sequelize from "../database.js";
 
 const schemaName = process.env.DB_SCHEMA || "public";
 
@@ -83,4 +83,4 @@ User.prototype.toJSON = function toJSON() {
   return values;
 };
 
-module.exports = User;
+export default User;

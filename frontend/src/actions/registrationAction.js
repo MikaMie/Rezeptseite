@@ -26,7 +26,7 @@ export async function action({ request }) {
     if (!response.ok) {
       return { error: "User konnte nicht registriert werden" };
     }
-    return redirect(`/`);
+    return redirect(`/login`);
   } catch (err) {
     return {
       error:
