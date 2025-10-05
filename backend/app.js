@@ -1,10 +1,10 @@
 import express from "express";
 import { config } from "dotenv";
+config();
 import sequelize from "./database.js";
 import rezepteRoutes from "./routes/rezepte.js";
 import authRoutes from "./routes/authRoutes.js";
 
-config();
 
 const app = express();
 app.use(express.json());

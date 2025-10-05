@@ -1,5 +1,3 @@
-// Angenommen: isAuthenticated kommt aus deinem Auth-Context/State
-//import { useAuth } from "../auth/AuthContext";
 import {
   UserPlusIcon,
   ArrowRightOnRectangleIcon,
@@ -11,12 +9,16 @@ import {
 } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/auth/useAuth";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  //const { isAuthenticated } = useAuth(); // oder prop / Zustand
+  const { isAuthenticated } = useAuth(); 
   const sidebarWidth = "w-72 md:w-80";
-  const isAuthenticated = false;
+
+  function handleLogout() {
+    localStorage.removeItem("token");
+  }
 
   return (
     <>
@@ -137,6 +139,9 @@ export default function Navbar() {
             </div>
           </div>
         )}
+        {isAuthenticated && <div>
+          <button onClick={() => handleLogout()}>Logout</button>
+          </div>}
 
         <div className="mt-auto pt-6 text-sm text-amber-800/70">
           <p>© {new Date().getFullYear()} Mika Mielinski, Telse Jensen</p>

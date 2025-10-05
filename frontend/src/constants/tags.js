@@ -51,6 +51,7 @@ export const TAG_CATEGORIES = [
       { value: "grillen", label: "🔥 Grillen", color: "#D32F2F" },
       { value: "party", label: "🎉 Party", color: "#FF4081" },
       { value: "mealprep", label: "📦 Meal Prep", color: "#00BCD4" },
+      { value: "grundgericht",label: "🥦 Grundgericht", color: "#41ea28ff"},
       {
         value: "resteverwertung",
         label: "♻️ Resteverwertung",
